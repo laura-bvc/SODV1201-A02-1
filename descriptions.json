@@ -51,11 +51,11 @@
 	},
 	"48":{
 		"day":{
-			"description":"Foggy",
+			"description":"Rime Fog",
 			"image":"http://openweathermap.org/img/wn/50d@2x.png"
 		},
 		"night":{
-			"description":"Foggy",
+			"description":"Rime Fog",
 			"image":"http://openweathermap.org/img/wn/50n@2x.png"
 		}
 	},
