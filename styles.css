@@ -1,9 +1,11 @@
+
 /**
- * @name: GLA 2
- * @Course Code: SODV1201
- * @class: Software Development Diploma program.
- * @author: Laurainda Fan
- **/
+* @name: Assignement1
+* @Course Code: SODV1201
+* @class: Software Development Diploma program.
+* @author: Laurainda Fan
+**/
+
 
 body {
     font-family: 'Brush Script MT', 'Lucida Sans Typewriter', Helvetica, sans-serif;
@@ -15,25 +17,82 @@ body {
 }
 
 :root {
-	--bg-cream: #FFFDD0;
+	--bg-cream: #CDDEEE;
+	--bg-panel: #FFFDD0;
+	--bg-navbar: #274472;
+	--bg-navbar-text: #FFFDD0;
 	--bg-text: #274472;
 }
 
+#navbar {
+	width: 100%;
+	overflow: hidden;
+	background-color: var(--bg-navbar);
+}
+#navbar a {
+	float: left;
+	color: var(--bg-navbar-text);
+	text-align: center;
+	padding: 1.5vh 4vw;
+	text-decoration: none;
+	font-size: 3vh;
+}
+#navbar a:hover {
+	background-color: var(--bg-navbar-text);
+	color: var(--bg-navbar);
+}
+#navbar a.active {
+	background-color: red;
+	color: white;
+}
 
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+
+#footer {
+	width: 100%;
+	overflow: hidden;
+	background-color: var(--bg-navbar);
+	color: var(--bg-navbar-text);
 }
-td, th {
-    padding: 10px;
-}
-th {
-    text-transform: uppercase;
-}
-img {
-    width: 5vw;
-}
-#container {
+
+
+.div_main {
+	float: left;
+	overflow-x: hidden;
+	height: 75vh;
 	width: 90vw;
-	margin: 0 auto;
+	margin: 1vh 1vw;
+	padding: 3vh 3vw;
+	border-radius: 40px;
+	text-align: justify;
+	background-color: var(--bg-panel);
+	color: var(--bg-text);
+}
+
+
+#div_img {
+	float: right;
+	padding: 0 10px;
+	margin: 0 20px 0 50px;
+}
+#img_label {
+	padding: 0 40px;
+	font-weight: bold;
+	font-size: 1.6em;
+}
+
+img {
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  padding: 5px;
+  width: 200px;
+}
+
+.error_msg {
+	color: red;
+}
+
+table, th, td{
+	border: 1px solid;
+	border-collapse: collapse;
+	padding: 5px;
 }

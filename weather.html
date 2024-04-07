@@ -2,34 +2,39 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Open-Meteoのサンプル</title>
+  <title>Calgary Current Weather</title>
 </head>
 <body>
-  <h1>Open-Meteoのサンプル</h1>
-  <canvas id="stage"></canvas>
+  <h1>Calgary Current Weather</h1>
+ 
   
   <hr/>
   
-  <!-- 「Open-Meteo」の帰属表示 -->
+  
   <small><a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a></small>
   
   
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
   <script>
     // Fetch current weather
-    const url = 'https://api.open-meteo.com/v1/forecast?latitude=51.0501&longitude=-114.0853&current=temperature_2m,apparent_temperature,precipitation,weather_code&timezone=America%2FDenver';
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=51.0501&longitude=-114.0853&current=temperature_2m,apparent_temperature,is_day,precipitation,weather_code&timezone=America%2FDenver';
+	
+		
+	// json from https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c
+	const wmo = "https://gist.githubusercontent.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c/raw/76b0cb0ef0bfd8a2ec988aa54e30ecd1b483495d/descriptions.json";
+	// const wmo = "./descriptions.json";
+	var wmo_json;
+	
+	fetch(wmo)
+	.then(data => data.json())
+	.then(json => {
+		wmo_json = json;
+		console.log(wmo_json[0]);
+		});
 
     fetch(url)
     .then(data => data.json())
     .then(json => parseCurr(json))
-	
-	// wmo json from https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c
-	//const wmo = "./descriptions.json";
 
-	fetch("./descriptions.json")
-.then(res => res.json())
-.then(data => console.log(data))
-	
 	
 	function parseCurr(json) {
 		const currData = {
@@ -42,10 +47,13 @@
 		console.log("Date: " + currData.Date.toLocaleString());
 		console.log("Date: " + currData.Date.toLocaleDateString());
 		console.log("Time: " + currData.Date.toLocaleTimeString());
-		console.log("WMO: " + currData.wmo);
+		console.log("WMO: " + currData.wmo); // refer to json
+		console.log("Day or night: " + currData.is_day); // day = 1, night = 0
 		console.log("Temperature: " + currData.Temp + "°C");
 		console.log("Feels like: " + currData.Temp_feel + "°C");
 		console.log("precipitation: " + currData.Precip + "mm");
+		console.log("WMO: " + wmo_json[currData.wmo]["day"].description);
+		
 	}
 
 
