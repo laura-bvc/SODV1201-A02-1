@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Open-Meteoのサンプル</title>
+</head>
+<body>
+  <h1>Open-Meteoのサンプル</h1>
+  <canvas id="stage"></canvas>
+  
+  <hr/>
+  
+  <!-- 「Open-Meteo」の帰属表示 -->
+  <small><a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a></small>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+  <script>
+    // Fetch current weather
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=51.0501&longitude=-114.0853&current=temperature_2m,apparent_temperature,precipitation,weather_code&timezone=America%2FDenver';
+
+    fetch(url)
+    .then(data => data.json())
+    .then(json => parseCurr(json))
+	
+	// wmo json from https://gist.github.com/stellasphere/9490c195ed2b53c707087c8c2db4ec0c
+	//const wmo = "./descriptions.json";
+
+	fetch("./descriptions.json")
+.then(res => res.json())
+.then(data => console.log(data))
+	
+	
+	function parseCurr(json) {
+		const currData = {
+			Date: new Date(json.current.time),
+			wmo: json.current.weather_code,
+			Temp: json.current.temperature_2m,
+			Temp_feel: json.current.apparent_temperature,
+			Precip: json.current.precipitation
+		}
+		console.log("Date: " + currData.Date.toLocaleString());
+		console.log("Date: " + currData.Date.toLocaleDateString());
+		console.log("Time: " + currData.Date.toLocaleTimeString());
+		console.log("WMO: " + currData.wmo);
+		console.log("Temperature: " + currData.Temp + "°C");
+		console.log("Feels like: " + currData.Temp_feel + "°C");
+		console.log("precipitation: " + currData.Precip + "mm");
+	}
+
+
+
+  </script>
+</body>
+</html>
