@@ -56,11 +56,11 @@ body {
 
 
 .div_main {
-	float: left;
+	
 	overflow-x: hidden;
 	height: 75vh;
-	width: 90vw;
-	margin: 1vh 1vw;
+	width: 80vw;
+	margin: 1vh 10vw;
 	padding: 3vh 3vw;
 	border-radius: 40px;
 	text-align: justify;
@@ -69,30 +69,26 @@ body {
 }
 
 
-#div_img {
-	float: right;
+#weather_img {
 	padding: 0 10px;
-	margin: 0 20px 0 50px;
 }
 #img_label {
-	padding: 0 40px;
+	padding: 0 15px;
 	font-weight: bold;
-	font-size: 1.6em;
+	font-size: 1.2em;
 }
 
 img {
-  border: 1px solid #ddd;
-  border-radius: 40px;
+  border: 1px solid var(--bg-navbar);
+  border-radius: 30px;
   padding: 5px;
-  width: 200px;
+  width: 150px;
 }
 
-.error_msg {
-	color: red;
+#weather_txt {
+	padding: 40px 0;
 }
 
-table, th, td{
-	border: 1px solid;
-	border-collapse: collapse;
-	padding: 5px;
+em {
+	font-weight: bold;
 }
