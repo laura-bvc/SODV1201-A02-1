@@ -28,7 +28,7 @@ $(document).ready(function(){
     .then(data => data.json())
     .then(json => parseCurr(json))
 
-}
+});
 	
 	function parseCurr(json) {
 		const currData = {
