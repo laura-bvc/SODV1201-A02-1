@@ -1,4 +1,13 @@
-    // Fetch current weather
+/**
+* @name: Assignement2
+* @Course Code: SODV1201
+* @class: Software Development Diploma program
+* @author: Laurainda Fan
+**/
+
+$(document).ready(function(){
+
+    // current weather
     const url = 'https://api.open-meteo.com/v1/forecast?latitude=51.0501&longitude=-114.0853&current=temperature_2m,apparent_temperature,is_day,precipitation,weather_code&timezone=America%2FDenver';
 	
 		
@@ -7,16 +16,19 @@
 	const wmo = "./descriptions.json";
 	var wmo_json;
 	
+	// Fetch WMO descriptions and images
 	fetch(wmo)
 	.then(data => data.json())
 	.then(json => {
 		wmo_json = json;
 		});
 
-    fetch(url)
+    // fetch current weather data and update to HTML
+	fetch(url)
     .then(data => data.json())
     .then(json => parseCurr(json))
 
+}
 	
 	function parseCurr(json) {
 		const currData = {
